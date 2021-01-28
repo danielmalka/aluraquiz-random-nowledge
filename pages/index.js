@@ -68,7 +68,7 @@ export default function Home() {
           </Widget>
           <Footer />
         </QuizContainer>
-        <GitHubCorner projectUrl="https://github.com/danielmalka" />
+        <GitHubCorner projectUrl="https://github.com/danielmalka/aluraquiz-rpg" />
       </QuizBackground>
   );
 }
