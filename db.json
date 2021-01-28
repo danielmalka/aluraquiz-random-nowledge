@@ -1,10 +1,10 @@
 {
-  "bg": "https://comunidice-project.danielmalka.vercel.app/img/bg_animated.gif",
+  "bg": "https://aluraquiz-rpg.danielmalka.vercel.app/img/bg_animated.gif",
   "title": "Quiz RPG - Alura Quiz",
   "description": "Teste os seus conhecimentos sobre RPG!",
   "questions": [
     {
-      "image": "https://comunidice-project.danielmalka.vercel.app/img/01.jpg",
+      "image": "https://aluraquiz-rpg.danielmalka.vercel.app/img/01.jpg",
       "title": "Qual foi o primeiro sistema de RPG? Ano do Lançamento: 1974",
       "description": "Role-playing game, também conhecido como RPG, é um tipo de jogo em que os jogadores assumem papéis de personagens e criam narrativas colaborativamente. O progresso de um jogo se dá de acordo com um sistema de regras predeterminado, dentro das quais os jogadores podem improvisar livremente. As escolhas dos jogadores determinam a direção que o jogo irá tomar.",
       "answer": 0,
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "image": "https://comunidice-project.danielmalka.vercel.app/img/02.jpg",
+      "image": "https://aluraquiz-rpg.danielmalka.vercel.app/img/02.jpg",
       "title": "Como se ganha em uma partida de RPG?",
       "description": "Normalmente uma partida de RPG é composta por mais de 1 pessoa, porém existem sistemas de aventura solo. Para essa pergunta, estamos levando em consideração uma partida com 2 ou mais participantes.",
       "answer": 0,
