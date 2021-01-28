@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import db from '../db.json';
 
 const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.secondary};
