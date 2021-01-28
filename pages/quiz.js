@@ -1,27 +1,27 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import db from '../db.json';
-import Widget from '../src/components/Widget';
+import Card from '../src/components/Card';
 import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
 import Button from '../src/components/Button';
 
-function LoadingWidget() {
+function LoadingCard() {
   return (
-    <Widget>
-      <Widget.Header>
+    <Card>
+      <Card.Header>
         Carregando...
-      </Widget.Header>
+      </Card.Header>
 
-      <Widget.Content>
+      <Card.Content>
         [Desafio do Loading]
-      </Widget.Content>
-    </Widget>
+      </Card.Content>
+    </Card>
   );
 }
 
-function QuestionWidget({
+function QuestionCard({
   question,
   questionIndex,
   totalQuestions,
@@ -29,13 +29,13 @@ function QuestionWidget({
 }) {
   const questionId = `question__${questionIndex}`;
   return (
-    <Widget>
-      <Widget.Header>
+    <Card>
+      <Card.Header>
         {/* <BackLinkArrow href="/" /> */}
         <h3>
           {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
-      </Widget.Header>
+      </Card.Header>
 
       <img
         alt="Descrição"
@@ -46,7 +46,7 @@ function QuestionWidget({
         }}
         src={question.image}
       />
-      <Widget.Content>
+      <Card.Content>
         <h2>
           {question.title}
         </h2>
@@ -63,7 +63,7 @@ function QuestionWidget({
           {question.alternatives.map((alternative, alternativeIndex) => {
             const alternativeId = `alternative__${alternativeIndex}`;
             return (
-              <Widget.Topic
+              <Card.Topic
                 as="label"
                 htmlFor={alternativeId}
               >
@@ -74,7 +74,7 @@ function QuestionWidget({
                   type="radio"
                 />
                 {alternative}
-              </Widget.Topic>
+              </Card.Topic>
             );
           })}
 
@@ -85,8 +85,8 @@ function QuestionWidget({
             Confirmar
           </Button>
         </form>
-      </Widget.Content>
-    </Widget>
+      </Card.Content>
+    </Card>
   );
 }
 
@@ -128,7 +128,7 @@ export default function QuizPage() {
       <QuizContainer>
         <QuizLogo />
         {screenState === screenStates.QUIZ && (
-        <QuestionWidget
+        <QuestionCard
           question={question}
           questionIndex={questionIndex}
           totalQuestions={totalQuestions}
@@ -136,7 +136,7 @@ export default function QuizPage() {
         />
         )}
 
-        {screenState === screenStates.LOADING && <LoadingWidget />}
+        {screenState === screenStates.LOADING && <LoadingCard />}
 
         {screenState === screenStates.RESULT && <div>Você acertou X questões, parabéns!</div>}
       </QuizContainer>

@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import db from '../db.json';
-import Widget from '../src/components/Widget';
+import Card from '../src/components/Card';
 import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
 import Footer from '../src/components/Footer';
@@ -34,11 +34,11 @@ export default function Home() {
       </Head>
       <QuizContainer>
         <QuizLogo />
-        <Widget>
-          <Widget.Header>
+        <Card>
+          <Card.Header>
             <h1>{db.title}</h1>
-          </Widget.Header>
-          <Widget.Content>
+          </Card.Header>
+          <Card.Content>
             <p>{db.description}</p>
             <form onSubmit={function (infosDoEvento) {
               infosDoEvento.preventDefault();
@@ -56,16 +56,16 @@ export default function Home() {
                 {`Jogar ${name}`}
               </Button>
             </form>
-          </Widget.Content>
-        </Widget>
+          </Card.Content>
+        </Card>
 
-        <Widget>
-          <Widget.Content>
+        <Card>
+          <Card.Content>
             <h1>Quizes da Galera</h1>
 
             <p>lorem ipsum dolor sit amet...</p>
-          </Widget.Content>
-        </Widget>
+          </Card.Content>
+        </Card>
         <Footer />
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/danielmalka/aluraquiz-rpg" />

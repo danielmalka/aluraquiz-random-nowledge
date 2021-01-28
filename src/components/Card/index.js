@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Widget = styled.div`
+const Card = styled.div`
   margin-top: 24px;
   margin-bottom: 24px;
   border: 1px solid ${({ theme }) => theme.colors.primary};
@@ -21,7 +21,7 @@ const Widget = styled.div`
   }
 `;
 
-Widget.Header = styled.header`
+Card.Header = styled.header`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -33,7 +33,7 @@ Widget.Header = styled.header`
   }
 `;
 
-Widget.Content = styled.div`
+Card.Content = styled.div`
   padding: 24px 32px 32px 32px;
   & > *:first-child {
     margin-top: 0;
@@ -47,7 +47,7 @@ Widget.Content = styled.div`
   }
 `;
 
-Widget.Topic = styled.a`
+Card.Topic = styled.a`
   outline: 0;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.contrastText};
@@ -65,4 +65,4 @@ Widget.Topic = styled.a`
   }
 `;
 
-export default Widget;
+export default Card;
