@@ -1,5 +1,6 @@
 {
   "bg": "https://aluraquiz-rpg.danielmalka.vercel.app/img/bg_animated.gif",
+  "path": "https://aluraquiz-rpg.danielmalka.vercel.app",
   "title": "Quiz RPG - Alura Quiz",
   "description": "Teste os seus conhecimentos sobre RPG!",
   "questions": [

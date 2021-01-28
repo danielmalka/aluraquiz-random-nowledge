@@ -15,7 +15,10 @@ function LoadingCard() {
       </Card.Header>
 
       <Card.Content>
-        [Desafio do Loading]
+          <img
+              src={` ${db.path}/img/loading.gif`}
+              alt="Carregando"
+          />
       </Card.Content>
     </Card>
   );
