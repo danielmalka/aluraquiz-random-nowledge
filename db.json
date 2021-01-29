@@ -7,7 +7,7 @@
     {
       "image": "https://aluraquiz-rpg.danielmalka.vercel.app/img/01.jpg",
       "title": "Qual foi o primeiro sistema de RPG? Ano do Lançamento: 1974",
-      "description": "Role-playing game, também conhecido como RPG, é um tipo de jogo em que os jogadores assumem papéis de personagens e criam narrativas colaborativamente. O progresso de um jogo se dá de acordo com um sistema de regras predeterminado, dentro das quais os jogadores podem improvisar livremente. As escolhas dos jogadores determinam a direção que o jogo irá tomar.",
+      "description": "Role-playing game, também conhecido como RPG, é um tipo de jogo em que os jogadores assumem papéis de personagens e criam narrativas colaborativamente.",
       "answer": 0,
       "alternatives": [
         "Dungeons & Dragons, criado por Gary Gygax e Dave Arneson",
@@ -30,7 +30,7 @@
     }
   ],
   "external": [
-    ""
+    "https://aluraquiz-css.omariosouto.vercel.app"
   ],
   "theme": {
     "colors": {

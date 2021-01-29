@@ -11,6 +11,7 @@ import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import Input from '../src/components/Input';
 import Button from '../src/components/Button';
+import Link from "../src/components/Link";
 
 const QuizContainer = styled.div`
   width: 100%;
@@ -63,7 +64,24 @@ export default function Home() {
           <Card.Content>
             <h1>Quizes da Galera</h1>
 
-            <p>lorem ipsum dolor sit amet...</p>
+            {db.external.map((external) => {
+              const [projectName, githubUser] = external
+                .replace(/\//g, '')
+                .replace('https:', '')
+                .replace('.vercel.app', '')
+                .split('.');
+
+              return (
+                <li key={external}>
+                  <Card.Topic
+                    as={Link}
+                    href={`/quiz/${projectName}___${githubUser}`}
+                    >
+                    {`${githubUser}/${projectName}`}
+                  </Card.Topic>
+                </li>
+              );
+            })}
           </Card.Content>
         </Card>
         <Footer />

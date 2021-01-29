@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import db from '../db.json';
-import Card from '../src/components/Card';
-import QuizLogo from '../src/components/QuizLogo';
-import QuizBackground from '../src/components/QuizBackground';
-import QuizContainer from '../src/components/QuizContainer';
-import ResultBox from '../src/components/ResultBox';
-import Button from '../src/components/Button';
+import db from '../../../db.json';
+import Card from '../../components/Card';
+import QuizLogo from '../../components/QuizLogo';
+import QuizBackground from '../../components/QuizBackground';
+import QuizContainer from '../../components/QuizContainer';
+import ResultBox from '../../components/ResultBox';
+import AlternativesForm from '../../components/AlternativesForm';
+import Button from '../../components/Button';
+import BackLinkArrow from '../../components/BackLinkArrow';
 
 function LoadingCard() {
   return (
@@ -26,11 +28,12 @@ function LoadingCard() {
 }
 
 function QuestionCard({
-  question,
-  questionIndex,
-  totalQuestions,
-  onSubmit,
-}) {
+    question,
+    questionIndex,
+    totalQuestions,
+    onSubmit,
+    addResult,
+  }) {
   const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
   const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const questionId = `question__${questionIndex}`;
@@ -40,7 +43,7 @@ function QuestionCard({
   return (
     <Card>
       <Card.Header>
-        {/* <BackLinkArrow href="/" /> */}
+        <BackLinkArrow href="/" />
         <h3>
           {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
@@ -114,26 +117,22 @@ const screenStates = {
   LOADING: 'LOADING',
   RESULT: 'RESULT',
 };
-export default function QuizPage() {
+
+export default function QuizScreen({ externalQuestions, externalBg }) {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
   const [results, setResults] = React.useState([]);
-  const totalQuestions = db.questions.length;
+  const totalQuestions = externalQuestions.length;
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const questionIndex = currentQuestion;
-  const question = db.questions[questionIndex];
+  const question = externalQuestions[questionIndex];
 
   function addResult(result) {
-    // results.push(result);
     setResults([
       ...results,
       result,
     ]);
   }
 
-  // [React chama de: Efeitos || Effects]
-  // React.useEffect
-  // atualizado === willUpdate
-  // morre === willUnmount
   React.useEffect(() => {
     // fetch() ...
     setTimeout(() => {
@@ -152,17 +151,17 @@ export default function QuizPage() {
   }
 
   return (
-    <QuizBackground backgroundImage={db.bg}>
+    <QuizBackground backgroundImage={externalBg}>
       <QuizContainer>
         <QuizLogo />
         {screenState === screenStates.QUIZ && (
-        <QuestionCard
-          question={question}
-          questionIndex={questionIndex}
-          totalQuestions={totalQuestions}
-          onSubmit={handleSubmitQuiz}
-          addResult={addResult}
-        />
+          <QuestionCard
+            question={question}
+            questionIndex={questionIndex}
+            totalQuestions={totalQuestions}
+            onSubmit={handleSubmitQuiz}
+            addResult={addResult}
+          />
         )}
 
         {screenState === screenStates.LOADING && <LoadingCard />}
