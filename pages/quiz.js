@@ -79,7 +79,7 @@ function QuestionCard({
             const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
             const isSelected = selectedAlternative === alternativeIndex;
             return (
-              <Widget.Topic
+              <Card.Topic
                 as="label"
                 key={alternativeId}
                 htmlFor={alternativeId}
@@ -94,7 +94,7 @@ function QuestionCard({
                   type="radio"
                 />
                 {alternative}
-              </Widget.Topic>
+              </Card.Topic>
             );
           })}
           <Button type="submit" disabled={!hasAlternativeSelected}>
@@ -155,7 +155,7 @@ export default function QuizPage() {
       <QuizContainer>
         <QuizLogo />
         {screenState === screenStates.QUIZ && (
-        <QuestionWidget
+        <QuestionCard
           question={question}
           questionIndex={questionIndex}
           totalQuestions={totalQuestions}
@@ -164,9 +164,9 @@ export default function QuizPage() {
         />
         )}
 
-        {screenState === screenStates.LOADING && <LoadingWidget />}
+        {screenState === screenStates.LOADING && <LoadingCard />}
 
-        {screenState === screenStates.RESULT && <ResultWidget results={results} />}
+        {screenState === screenStates.RESULT && <ResultCard results={results} />}
       </QuizContainer>
     </QuizBackground>
   );
