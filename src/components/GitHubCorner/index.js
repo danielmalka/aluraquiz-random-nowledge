@@ -1,4 +1,4 @@
-// src/components/GitHubCorner/index.js
+// src/components/GitHubCorner/useNotify.js
 import React from 'react';
 import styled from 'styled-components';
 

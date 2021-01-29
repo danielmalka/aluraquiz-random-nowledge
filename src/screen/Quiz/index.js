@@ -13,6 +13,7 @@ import BackLinkArrow from '../../components/BackLinkArrow';
 import {AnimatePresence, motion} from "framer-motion";
 import CloseButton from "../../components/CloseButton";
 import GitHubCorner from "../../components/GitHubCorner";
+import useNotify from "../../useNotify";
 
 function LoadingCard() {
   return (
@@ -25,6 +26,7 @@ function LoadingCard() {
         <img
           src={` ${db.path}/img/loading.gif`}
           alt="Carregando"
+          width="100%"
         />
       </Card.Content>
     </Card>
@@ -126,6 +128,7 @@ const screenStates = {
 };
 
 export default function QuizScreen({ externalQuestions, externalBg }) {
+  const notify = useNotify();
   const [notifications, setNotifications] = React.useState([]);
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
   const [results, setResults] = React.useState([]);
@@ -135,11 +138,9 @@ export default function QuizScreen({ externalQuestions, externalBg }) {
   const question = externalQuestions[questionIndex];
 
   function addResult(result) {
-    const notification = result ? <p>Você acertou!</p> : <p>Você errou!</p>;
-    setNotifications([
-      ...notifications,
-      notification,
-    ]);
+    const msgNotify = result ? "Você acertou!" : "Você errou!";
+    const styleNotify = result ? "success" : "error";
+    notify({ title: msgNotify, type: styleNotify })
     setResults([
       ...results,
       result,

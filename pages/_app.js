@@ -1,5 +1,7 @@
 import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import NotificationProvider from "../src/components/NotificationProvider";
+import Notification from "../src/components/Notification";
 import Head from 'next/head';
 import db from '../db.json';
 
@@ -40,7 +42,9 @@ export default function App({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Component {...pageProps} />
+        <NotificationProvider>
+          <Component {...pageProps} />
+        </NotificationProvider>
       </ThemeProvider>
     </>
   );

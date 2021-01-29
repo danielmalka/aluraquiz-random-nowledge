@@ -1,4 +1,4 @@
-// src/components/QuizBackground/index.js
+// src/components/QuizBackground/useNotify.js
 import styled from 'styled-components';
 
 const QuizBackground = styled.div`
