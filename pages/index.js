@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-
 import db from '../db.json';
 import Card from '../src/components/Card';
 import QuizLogo from '../src/components/QuizLogo';
@@ -72,7 +71,12 @@ export default function Home() {
                 .split('.');
 
               return (
-                <li key={external}>
+                <li
+                  key={external}
+                  style={{
+                    listStyle: 'none'
+                  }}
+                >
                   <Card.Topic
                     as={Link}
                     href={`/quiz/${projectName}___${githubUser}`}

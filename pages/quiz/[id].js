@@ -3,10 +3,11 @@ import QuizScreen from "../../src/screen/Quiz";
 import {ThemeProvider} from "styled-components";
 
 export default function QuizDaGaleraPage({dbExterno}) {
+  console.log(dbExterno);
   return (
     <ThemeProvider theme={dbExterno.theme}>
       <QuizScreen
-        externalQuestions={dbExterno.question}
+        externalQuestions={dbExterno.questions}
         externalBg={dbExterno.bg}
       />
     </ThemeProvider>
