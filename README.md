@@ -47,3 +47,7 @@ Seja bem vindo ao meu projeto do AluraQuiz!
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
+
+[![https://vercel.com?utm_source=github_readme_stats_team&utm_campaign=oss](../powered-by-vercel.svg)](https://vercel.com?utm_source=aluraquiz-rpg&utm_campaign=oss)
+
+Feito com :heart: e JavaScript.
