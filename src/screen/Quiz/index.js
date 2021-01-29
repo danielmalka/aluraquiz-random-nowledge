@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import db from '../../../db.json';
+import Head from 'next/head';
 import Card from '../../components/Card';
 import QuizLogo from '../../components/QuizLogo';
 import QuizBackground from '../../components/QuizBackground';
@@ -9,6 +10,9 @@ import ResultBox from '../../components/ResultBox';
 import AlternativesForm from '../../components/AlternativesForm';
 import Button from '../../components/Button';
 import BackLinkArrow from '../../components/BackLinkArrow';
+import {AnimatePresence, motion} from "framer-motion";
+import CloseButton from "../../components/CloseButton";
+import GitHubCorner from "../../components/GitHubCorner";
 
 function LoadingCard() {
   return (
@@ -101,11 +105,14 @@ function QuestionCard({
               </Card.Topic>
             );
           })}
-          <Button type="submit" disabled={!hasAlternativeSelected}>
+          <Button
+            type="submit"
+            disabled={!hasAlternativeSelected}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
             Confirmar
           </Button>
-          {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
-          {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
         </AlternativesForm>
       </Card.Content>
     </Card>
@@ -119,6 +126,7 @@ const screenStates = {
 };
 
 export default function QuizScreen({ externalQuestions, externalBg }) {
+  const [notifications, setNotifications] = React.useState([]);
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
   const [results, setResults] = React.useState([]);
   const totalQuestions = externalQuestions.length;
@@ -127,6 +135,11 @@ export default function QuizScreen({ externalQuestions, externalBg }) {
   const question = externalQuestions[questionIndex];
 
   function addResult(result) {
+    const notification = result ? <p>Você acertou!</p> : <p>Você errou!</p>;
+    setNotifications([
+      ...notifications,
+      notification,
+    ]);
     setResults([
       ...results,
       result,
@@ -152,6 +165,9 @@ export default function QuizScreen({ externalQuestions, externalBg }) {
 
   return (
     <QuizBackground backgroundImage={externalBg}>
+      <Head>
+        <title>{db.title}</title>
+      </Head>
       <QuizContainer>
         <QuizLogo />
         {screenState === screenStates.QUIZ && (
@@ -168,6 +184,30 @@ export default function QuizScreen({ externalQuestions, externalBg }) {
 
         {screenState === screenStates.RESULT && <ResultBox results={results} />}
       </QuizContainer>
+      <div className="container">
+        <ul>
+          <AnimatePresence initial={false}>
+            {notifications.map(not => {
+              const index = notifications.indexOf(not)
+              console.log(notifications, index);
+              return (
+                <motion.li
+                  key={`motion___${index}`}
+                  positionTransition
+                  initial={{ opacity: 0, y: 50, scale: 0.3}}
+                  animate={{ opaity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 }}}
+                >
+                  <CloseButton
+                    close={() => setNotifications(notifications.splice(index, 1))}
+                  />
+                </motion.li>
+              );
+            })}
+          </AnimatePresence>
+        </ul>
+      </div>
+      <GitHubCorner projectUrl="https://github.com/danielmalka/aluraquiz-rpg" />
     </QuizBackground>
   );
 }

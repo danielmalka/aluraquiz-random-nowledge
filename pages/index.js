@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
+import { motion } from 'framer-motion'
 import { useRouter } from 'next/router';
+
 import db from '../db.json';
 import Card from '../src/components/Card';
 import QuizLogo from '../src/components/QuizLogo';
@@ -34,7 +36,16 @@ export default function Home() {
       </Head>
       <QuizContainer>
         <QuizLogo />
-        <Card>
+        <Card
+          as={motion.section}
+          transition={{ delay: 0, duration: 0.5 }}
+          variants={{
+            show: { opacity: 1, x: 0 },
+            hidden: { opacity: 0, x: -1000 },
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Card.Header>
             <h1>{db.title}</h1>
           </Card.Header>
@@ -52,14 +63,27 @@ export default function Home() {
                 placeholder="Diz ai seu nome"
                 value={name}
               />
-              <Button type="submit" disabled={name.length === 0}>
+              <Button
+                type="submit"
+                disabled={name.length === 0}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 {`Jogar ${name}`}
               </Button>
             </form>
           </Card.Content>
         </Card>
-
-        <Card>
+        <Card
+          as={motion.section}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          variants={{
+            show: { opacity: 1, x: 0 },
+            hidden: { opacity: 0, x: -1000 },
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Card.Content>
             <h1>Quizes da Galera</h1>
 
@@ -88,7 +112,16 @@ export default function Home() {
             })}
           </Card.Content>
         </Card>
-        <Footer />
+        <Footer
+          as={motion.section}
+          transition={{ delay: 1, duration: 0.5 }}
+          variants={{
+            show: { opacity: 1 },
+            hidden: { opacity: 0},
+          }}
+          initial="hidden"
+          animate="show"
+        />
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/danielmalka/aluraquiz-rpg" />
     </QuizBackground>

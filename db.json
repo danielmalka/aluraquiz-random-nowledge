@@ -41,9 +41,9 @@
       "secondary": "#996633",
       "mainBg": "#000000",
       "contrastText": "#FFFFFF",
-      "wrong": "#FF5722",
-      "success": "#4CAF50"
+      "wrong": "#ff3333",
+      "success": "#008800"
     },
-    "borderRadius": "4px"
+    "borderRadius": "8px"
   }
 }

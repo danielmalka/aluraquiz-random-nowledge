@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/router'
 import Card from '../Card';
+import BackLinkArrow from "../BackLinkArrow";
 
 // eslint-disable-next-line react/prop-types
 export default function ResultBox({ results }) {
@@ -12,6 +13,7 @@ export default function ResultBox({ results }) {
   return (
     <Card>
       <Card.Header>
+        <BackLinkArrow href="/" />
         Tela de Resultado:
       </Card.Header>
 
