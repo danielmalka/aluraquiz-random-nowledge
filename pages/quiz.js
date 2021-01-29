@@ -5,6 +5,7 @@ import Card from '../src/components/Card';
 import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
+import ResultBox from '../src/components/ResultBox';
 import Button from '../src/components/Button';
 
 function LoadingCard() {
@@ -166,7 +167,7 @@ export default function QuizPage() {
 
         {screenState === screenStates.LOADING && <LoadingCard />}
 
-        {screenState === screenStates.RESULT && <ResultCard results={results} />}
+        {screenState === screenStates.RESULT && <ResultBox results={results} />}
       </QuizContainer>
     </QuizBackground>
   );

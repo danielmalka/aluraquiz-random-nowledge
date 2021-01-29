@@ -2,9 +2,9 @@ import db from '../../db.json';
 
 export default function dbHandler(request, response) {
   if (request.method !== 'GET') {
-    response.status(405).json([{
+    response.status(405).json({
       'error': 'Não permitido'
-    }]);
+    });
     return;
   }
 
