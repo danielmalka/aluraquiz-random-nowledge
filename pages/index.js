@@ -84,15 +84,24 @@ export default function Home() {
           initial="hidden"
           animate="show"
         >
-          <Card.Content>
+          <Card.Content
+            style={{
+              maxHeight: "300px",
+              overflowY: "auto",
+            }}
+          >
             <h1>Quizes da Galera</h1>
-
+            <br />
             {db.external.map((external) => {
               const [projectName, githubUser] = external
                 .replace(/\//g, '')
                 .replace('https:', '')
                 .replace('.vercel.app', '')
                 .split('.');
+
+              if (projectName === undefined || githubUser === undefined) {
+                return false;
+              }
 
               return (
                 <li
